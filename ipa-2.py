@@ -162,6 +162,7 @@ def vigenere_cipher(message, key):
             i +=1
         else:
             ciphered_msg += char
+            i += 1
     return ciphered_msg
 
 def scytale_cipher(message, shift):
