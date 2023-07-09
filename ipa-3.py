@@ -86,20 +86,31 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
+    winner_board = set()
+    
     for row in board:
         if len(set(row)) == 1 and row[0] != " ":
-            return row[0]
+            winner_board.add(row[0])
 
     for col in range(len(board[0])):
         if len(set(row[col] for row in board)) == 1 and board[0][col] != " ":
-            return board[0][col]
+            winner_board.add(board[0][col])
 
     if len(set(board[i][i] for i in range(len(board)))) == 1 and board[0][0] != " ":
-        return board[0][0]
+        winner_board.add(board[0][0])
     if len(set(board[i][len(board)-1-i] for i in range(len(board)))) == 1 and board[0][len(board)-1] != " ":
-        return board[0][len(board)-1]
-
-    return "NO WINNER"
+        winner_board.add(board[0][len(board)-1])
+    
+    if " " in winner_board:
+        winner_board.remove(" ")
+    
+    if "" in winner_board:
+        winner_board.remove("")
+        
+    if len(winner_board) == 1:
+        return str(winner_board)[2]
+    else:
+        return "NO WINNER"
 
 def eta(first_stop, second_stop, route_map):
     '''ETA.
